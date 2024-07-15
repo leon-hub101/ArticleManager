@@ -46,3 +46,36 @@ Route::get('/tag/{slug}', function ($slug) {
 Route::get('/legal', function () {
     return view('legal');
 });
+
+// Search page route
+Route::get('/search', function () {
+    return view('search');
+});
+
+// Search functionality routes
+Route::get('/search/article', function (Request $request) {
+    $article = Article::find($request->id);
+    if ($article) {
+        return redirect()->route('article.show', ['id' => $article->id]);
+    } else {
+        return redirect()->route('search')->with('error', 'Article not found');
+    }
+})->name('search.article');
+
+Route::get('/search/category', function (Request $request) {
+    $category = Category::where('name', $request->name)->first();
+    if ($category) {
+        return redirect()->route('category.show', ['slug' => $category->slug]);
+    } else {
+        return redirect()->route('search')->with('error', 'Category not found');
+    }
+})->name('search.category');
+
+Route::get('/search/tag', function (Request $request) {
+    $tag = Tag::where('name', $request->name)->first();
+    if ($tag) {
+        return redirect()->route('tag.show', ['slug' => $tag->slug]);
+    } else {
+        return redirect()->route('search')->with('error', 'Tag not found');
+    }
+})->name('search.tag');
