@@ -16,8 +16,7 @@
     <h1>Search</h1>
 
     <!-- Instructions for users -->
-    <p>Use the search bars below to search for articles by ID, categories by name, or tags by name. The lists of
-        categories and tags below show all available options that you can use for your search.</p>
+    <p>Use the search bars below to search for articles by ID, categories by name, or tags by name.</p>
 
     <!-- Form for searching articles by ID -->
     <form action="{{ route('search.article') }}" method="GET">
