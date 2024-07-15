@@ -15,6 +15,10 @@
     @section('content')
     <h1>Search</h1>
 
+    <!-- Instructions for users -->
+    <p>Use the search bars below to search for articles by ID, categories by name, or tags by name. The lists of
+        categories and tags below show all available options that you can use for your search.</p>
+
     <!-- Form for searching articles by ID -->
     <form action="{{ route('search.article') }}" method="GET">
         <label for="article_id">Search Article by ID:</label>
@@ -43,17 +47,20 @@
 
     <!-- List of all categories -->
     <h2>Categories</h2>
+    <p>Below is a list of all available categories. Use these names in the search bar above to find articles by
+        category.</p>
     <ul>
         @foreach($categories as $category)
-            <li><a href="{{ url('/category', $category->slug) }}">{{ $category->name }}</a></li>
+            <li>{{ $category->name }}</li>
         @endforeach
     </ul>
 
     <!-- List of all tags -->
     <h2>Tags</h2>
+    <p>Below is a list of all available tags. Use these names in the search bar above to find articles by tag.</p>
     <ul>
         @foreach($tags as $tag)
-            <li><a href="{{ url('/tag', $tag->slug) }}">{{ $tag->name }}</a></li>
+            <li>{{ $tag->name }}</li>
         @endforeach
     </ul>
     @endsection
