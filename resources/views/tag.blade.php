@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tag: {{ $tag->name }}</title>
 </head>
+
 <body>
+    @extends('layouts.main')
+
+    @section('title', 'Tag: ' . $tag->name)
+
+    @section('content')
     <!-- Title displaying the tag name -->
     <h1>Tag: {{ $tag->name }}</h1>
 
@@ -18,5 +25,7 @@
             <p>{{ Str::limit($article->content, 100, '...') }}</p>
         </div>
     @endforeach
+    @endsection
 </body>
+
 </html>

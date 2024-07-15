@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $article->title }}</title>
 </head>
+
 <body>
+    @extends('layouts.main')
+
+    @section('title', $article->title)
+
+    @section('content')
     <!-- Display the article title -->
     <h1>{{ $article->title }}</h1>
 
@@ -24,5 +31,7 @@
 
     <!-- Display the content of the article -->
     <div>{{ $article->content }}</div>
+    @endsection
 </body>
+
 </html>

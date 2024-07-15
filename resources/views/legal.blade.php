@@ -8,6 +8,11 @@
 </head>
 
 <body>
+    @extends('layouts.main')
+
+    @section('title', 'Legal')
+
+    @section('content')
     <!-- Section for Terms of Use -->
     <h1>Terms of Use</h1>
     <p>Welcome to ArticleManagement App!
@@ -89,6 +94,7 @@
 
         If you have questions or comments about this Privacy Policy, please contact us at: L.Pretorius07@gmail.com
     </p>
+    @endsection
 </body>
 
 </html>
