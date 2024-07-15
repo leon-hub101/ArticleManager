@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search</title>
 </head>
+
 <body>
     <h1>Search</h1>
 
@@ -33,5 +35,22 @@
     @if(session('error'))
         <p style="color:red">{{ session('error') }}</p>
     @endif
+
+    <h2>Categories</h2>
+    <ul>
+        @foreach($categories as $category)
+            <li><a href="{{ url('/category', $category->slug) }}">{{ $category->name }}</a></li>
+        @endforeach
+    </ul>
+
+    <!-- List of all tags -->
+    <h2>Tags</h2>
+    <ul>
+        @foreach($tags as $tag)
+            <li><a href="{{ url('/tag', $tag->slug) }}">{{ $tag->name }}</a></li>
+        @endforeach
+    </ul>
+    @endsection
 </body>
+
 </html>
