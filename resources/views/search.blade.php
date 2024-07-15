@@ -8,6 +8,11 @@
 </head>
 
 <body>
+    @extends('layouts.main')
+
+    @section('title', 'Search')
+
+    @section('content')
     <h1>Search</h1>
 
     <!-- Form for searching articles by ID -->
@@ -36,6 +41,7 @@
         <p style="color:red">{{ session('error') }}</p>
     @endif
 
+    <!-- List of all categories -->
     <h2>Categories</h2>
     <ul>
         @foreach($categories as $category)

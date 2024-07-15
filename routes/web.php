@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\Tag;
@@ -15,42 +16,34 @@ Route::get('/', function () {
         'categories' => $categories,
         'tags' => $tags
     ]);
-});
+})->name('home');
 
 // Article view route
 Route::get('/article/{id}', function ($id) {
-    // Find the article by ID, with its category and tags
     $article = Article::with('category', 'tags')->findOrFail($id);
     return view('article', ['article' => $article]);
-});
+})->name('article.show');
 
 // Category view route
 Route::get('/category/{slug}', function ($slug) {
-    // Find the category by slug
     $category = Category::where('slug', $slug)->firstOrFail();
-    // Get articles under this category
     $articles = $category->articles;
     return view('category', ['category' => $category, 'articles' => $articles]);
-});
+})->name('category.show');
 
 // Tag view route
 Route::get('/tag/{slug}', function ($slug) {
-    // Find the tag by slug
     $tag = Tag::where('slug', $slug)->firstOrFail();
-    // Get articles associated with this tag
     $articles = $tag->articles;
     return view('tag', ['tag' => $tag, 'articles' => $articles]);
-});
-
-// Legal page route
-Route::get('/legal', function () {
-    return view('legal');
-});
+})->name('tag.show');
 
 // Search page route
 Route::get('/search', function () {
-    return view('search');
-});
+    $categories = Category::all();
+    $tags = Tag::all();
+    return view('search', ['categories' => $categories, 'tags' => $tags]);
+})->name('search');
 
 // Search functionality routes
 Route::get('/search/article', function (Request $request) {
@@ -79,3 +72,10 @@ Route::get('/search/tag', function (Request $request) {
         return redirect()->route('search')->with('error', 'Tag not found');
     }
 })->name('search.tag');
+
+// Legal page route
+Route::get('/legal', function () {
+    return view('legal');
+})->name('legal');
+
+
