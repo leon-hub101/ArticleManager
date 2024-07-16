@@ -11,6 +11,9 @@
     <style>
         body {
             background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         .navbar,
@@ -24,6 +27,8 @@
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 80px;
+            /* Ensure there's space for the footer */
+            flex: 1;
         }
 
         .header,
@@ -47,6 +52,18 @@
         .btn-custom:hover {
             background-color: #0056b3;
             border-color: #004085;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .container {
+            text-align: center;
         }
     </style>
 </head>
