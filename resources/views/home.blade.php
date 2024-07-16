@@ -22,7 +22,7 @@
 <h2 class="my-4">Categories</h2>
 <ul class="list-group">
     @foreach($categories as $category)
-        <li class="list-group-item">{{ $category->name }}</li>
+        <li class="list-group-item"><a href="{{ url('/category', $category->slug) }}">{{ $category->name }}</a></li>
     @endforeach
 </ul>
 
@@ -30,7 +30,7 @@
 <h2 class="my-4">Tags</h2>
 <ul class="list-group">
     @foreach($tags as $tag)
-        <li class="list-group-item">{{ $tag->name }}</li>
+        <li class="list-group-item"><a href="{{ url('/tag', $tag->slug) }}">{{ $tag->name }}</a></li>
     @endforeach
 </ul>
 @endsection
