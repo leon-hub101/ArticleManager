@@ -26,9 +26,8 @@
             background-color: #ffffff;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 80px;
-            /* Ensure there's space for the footer */
-            flex: 1;
+            margin-bottom: 20px;
+            /* Add some margin at the bottom */
         }
 
         .header,
@@ -55,15 +54,15 @@
         }
 
         .footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            margin-top: auto;
+            /* Push footer to the bottom */
             padding: 10px 0;
             text-align: center;
         }
 
         .container {
-            text-align: center;
+            flex: 1;
+            /* Ensure container takes up available space */
         }
     </style>
 </head>
